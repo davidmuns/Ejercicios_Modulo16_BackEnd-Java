@@ -1,0 +1,320 @@
+{
+	"info": {
+		"_postman_id": "f518c7ea-456a-46d4-ab1d-d787c999398e",
+		"name": "api-rest-juegodados",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "jugadores",
+			"item": [
+				{
+					"name": "listado jugadores",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoibG9xdWVzZWEiLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjM1NTI1NTk2LCJleHAiOjE2MzU1MjYxOTZ9.uNuwga4HnkqdF3h1u9Iexfkiq43DsGqM5d8PEozj5DuxtztEhvOC614ThEI7QYnGZpqQSN9r81Gd4M_BT5eGRg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/jugadores",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jugadores"
+							]
+						},
+						"description": "Devuelve una lista de jugadores con el pocentaje de victorias"
+					},
+					"response": []
+				},
+				{
+					"name": "nuevo jugador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"nombre\":\"David\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/jugadores",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jugadores"
+							]
+						},
+						"description": "Guardar nombre jugador en bbdd. Si el valor es nulo o en blanco se almacena \"anonimo\" por defecto. No puede haber nombres duplicados."
+					},
+					"response": []
+				},
+				{
+					"name": "modificar nombre jugador by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nuevo nombre\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/jugadores/981775",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jugadores",
+								"981775"
+							]
+						},
+						"description": "Permite cambiar el nombre de un jugador ya existente."
+					},
+					"response": []
+				},
+				{
+					"name": "jugador by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/jugadores/432674",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jugadores",
+								"432674"
+							]
+						},
+						"description": "Elimna un jugador de la bbdd."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "jugadas",
+			"item": [
+				{
+					"name": "tirar dados by id jugador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/jugadores/434203/juego",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jugadores",
+								"434203",
+								"juego"
+							]
+						},
+						"description": "Permite hacer una tirada de dados"
+					},
+					"response": []
+				},
+				{
+					"name": "jugadas by id jugador",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/jugadores/434203/juego",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jugadores",
+								"434203",
+								"juego"
+							]
+						},
+						"description": "Devuelve todas las tiradas de un jugador"
+					},
+					"response": []
+				},
+				{
+					"name": "jugadas by id jugador",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/jugadores/972190/juego",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jugadores",
+								"972190",
+								"juego"
+							]
+						},
+						"description": "Elimina todas las tiradas de un jugador"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "estadisticas",
+			"item": [
+				{
+					"name": "porcentaje total victorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/jugadores/ranking",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jugadores",
+								"ranking"
+							]
+						},
+						"description": "Devuelve el porcentaje de victorias de todas las jugadas del sistema"
+					},
+					"response": []
+				},
+				{
+					"name": "jugador con peor porcentaje de victorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/jugadores/ranking/peor",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jugadores",
+								"ranking",
+								"peor"
+							]
+						},
+						"description": "Devuelve el jugador con el peor porcentaje de victorias"
+					},
+					"response": []
+				},
+				{
+					"name": "jugador con mejor porcentaje de victorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/jugadores/ranking/mejor",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jugadores",
+								"ranking",
+								"mejor"
+							]
+						},
+						"description": "Devuelve el jugador con el mejor porcentaje de victorias"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth-token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoicGFjbyIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2MzU4NzIwODIsImV4cCI6MTYzNTg3MjY4Mn0.qY6BbyJMRayHVJ_leP6AG0xMtXlv4a4fmb_c7D5Av89QtO6n1HMBWKCM0BgqXhERghyFIfCYlAVnc4uJf9gWdw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "user",
+							"value": "paco",
+							"type": "text"
+						},
+						{
+							"key": "pwd",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				},
+				"description": "Devuelve el token"
+			},
+			"response": []
+		}
+	]
+}
