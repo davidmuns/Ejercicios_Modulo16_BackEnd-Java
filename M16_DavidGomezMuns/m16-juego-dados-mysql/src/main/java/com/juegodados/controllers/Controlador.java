@@ -168,7 +168,7 @@ public class Controlador {
 
 			Jugador jugador = optionalJugador.get();
 
-			return ResponseEntity.ok(jugador);
+			return ResponseEntity.ok(jugador.getDados());
 
 		}
 		return ResponseEntity.status(404)
